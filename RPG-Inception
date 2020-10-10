@@ -1,0 +1,177 @@
+import pygame
+import time
+import random
+
+inventory = ["Tomtem"]
+
+def printText(sentence):
+    for char in sentence:
+        print(char, end = ' ')
+        time.sleep(.045)
+    print()
+
+# Intro
+
+printText("        **** Welcome to Inception****")
+printText("Location: Paris, France <The Four Seasons Hôtel George V>")
+printText("Date: 9/24/2020")
+printText("Time: 8:30 PM")
+
+input("Press Enter to continue...")
+
+# The intro for Laurent 
+print(" Name: Laurent Germain | Date of Birth: unknown Age: Possibly in the 20s| Nationality: Unknown")
+
+input("Press Enter to continue...")
+
+#Arthur's texts
+print(" ")
+print("    Arthur( “The Point Man”): Alright, Laurent, I'll give you five minutes here, so that will equal an hour inside.")
+print("    Ubel is known to be very secretive, meaning that his subconscious is going to be on high alert.")
+print("    The codes will be in the most heavily guarded area.")
+
+input("Press Enter to continue...")
+
+#Ariadne's texts
+print(" ")
+print("    Ariadne(“The Architect”):The design is going to be in three layers. The top one is going to be a small old town, with one street.")
+print("    In the middle of the street will be an old elevator. Take the elevator to go down the two other layers.")
+
+input("Press Enter to continue...")
+
+printText("YOU ARE NOW ENTERING INTO UBEL ANSEL'S DREAM")
+input("Press Enter to continue...")
+print(" ")
+print("You are walking down the main street and see an old grey elevator in the middle of the road.")
+print("Laurent(You): This must be the top layer.")
+print("You walk past all of the different sized and colored buildings and head straight to the elevator.")
+print("You can feel all of the eyes of Ubel's projections on you.")
+print("Your inventory:", inventory)
+
+input("Press Enter to continue...")
+
+print("You enter the elevator and see three buttons for each layer.")
+print(" ")
+print("Pick 1 to start the mission: ")
+print(" 1. First Button")
+print(" 2. Second Button")
+print(" 3. Third Button")
+
+def combat():
+    my_hp = 12
+    em_hp = 12
+    my_dmg = random.randrange(3, 6)
+    em_dmg = random.randrange(3, 6)
+
+    while True:
+        if em_hp < 0:
+            print("You have defeated the projection.")
+        elif my_hp < 0:
+            print("Mission incomplete. You were defeated by Ubels projection.")
+        if em_hp <= 0:
+            break
+        elif my_hp <= 0:
+            break
+#CHOICES
+        else:
+            print(" ")
+            print("Do you want to: ")
+            print(" 1. Attack")
+            print(" 2. Defend")
+            choice = input ("Enter your selection. ")
+            choice = float(choice)
+        if choice == 1:
+            em_hp = em_hp - my_dmg
+            print(" ")
+            print("The projection is at", em_hp, "health points.")
+
+            my_hp = my_hp - em_dmg
+            print("You were attacked by the projection", em_dmg, "damage!")
+            print("Your health ponits", my_hp)
+#DEFEND
+        if choice == 2:
+            em_hp = em_hp - my_dmg
+            print("The projection is at", em_hp, "health points.")
+            print("Your health ponits", my_hp)
+
+            print("The fight is over..")
+            print("Laurent's health: ", my_hp )
+            print("Projection's health: ",em_hp)
+
+
+while True:
+    choice = input (">> ")
+    choice = float(choice)
+    if choice == 1:
+        print(" ")
+        print("You are now going down to layer one.")
+        print("The doors of the elevator open, revealing a small square room with one door.")
+        print("One of Ubel's projections is walking toward you. It has a sharp look in its eyes.")
+        fight1 = combat()
+        print(fight1)
+        print(" ")
+        print("As you catch your breath, you walk towards the brown door,")
+        print("As you open the door, a small note on the ground is reviled. The note reads: Book number ten:")
+        print("You walk back to the elevator ready to take on another task.")
+        print("Every projection you defeat, your health goes up.")
+        print("Pick 2 to start the next mission: ")
+        print(" 2. Second Button")
+        print(" 3. Third Button")
+            
+    elif choice == 2:
+        print(" ")
+        print("You are now going down to layer two.")
+        print("Laurent(You): I must find the key to get down to the 3rd layer.... but where is it?")
+        print("The doors of the elevator open and show off a book filled walls.")
+        print("But your eyes start to focus on the huge projection coming towards you,")
+        fight1 = combat()
+        print(" ")
+        print("As you were ready to move on, another projection runs up to you.")
+        print("Laurent(You): Another one! Ubel must be very protective")
+        fight1 = combat()
+        print("Once you catch your breath and fix your tie, you set out to look for book ten.")
+        print("Laurent(You):Okay, 1...2...3..4..5...6...7...8..9...and 10!")
+        print("You open up the book and a small copper key falls out of it.")
+        print(" ")
+        item = input ("Type in key to add to inventory. >>")
+        if item == "key":
+          inventory.append(item)
+          print(("Inventory:", inventory))
+        print("Laurent(You):This must be the key to open up the 3rd layer.")
+        print(" ")
+        print("You move on back to the elevator.")
+        
+    elif choice == 3:
+      print(" ")
+      print("The third floor is locked...Need a key.")
+      print("Invetory:", inventory)
+      item = input("Chose an item from your inventory to open the 3rd layer.>>")
+      print(" ")
+      print(" 1. First Button")
+      print(" 2. Second Button")
+      print(" 3. Third Button")
+      if item in inventory:
+        if item == "key":
+          print("The third layer is opened")
+          print(" ")
+          print("Laurent(You):ahaha!.....")
+          print("The room was pitch black, but when you stepped into the room, a row of lights turn on.")
+          print(" The lights lead to a small box at the end of the room.")
+          print("Laurent(You): This seems to easy!")
+          input("Press Enter to continue...")
+          print("You walk forward slowly and turning your head side to side.")
+          print("As you got face to face with the box, you hesitate to open it.")
+          print("You hear slow footsteps creeping your way. As they get closer and, closer the dim light revels Uble's face. ")
+          print("A smirk forms onto his face. ")
+          print("Uble: You didn't think it would be that easy....right. ")
+          print("With a fast movement, he brings out a.....boom. ")
+          input("Press Enter to continue...")
+          print("Better luck next time..........son. ")
+          input("Press Enter to continue...")
+          printText("***Inception*** Part One")
+        if item == "Tomtem":
+          print("You are dreaming!")
+          print("3rd layer is locked")
+
+      else:
+        print("That item is NOT in your invetory!")
